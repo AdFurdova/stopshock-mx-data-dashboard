@@ -40,3 +40,6 @@ if df is not None:
         title=f"Missing Data for {column}"
     )
     st.plotly_chart(missing_fig)
+
+else:
+    st.write("### Please upload .csv file")
