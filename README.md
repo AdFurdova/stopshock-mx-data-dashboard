@@ -1,8 +1,8 @@
-# :earth_americas: GDP dashboard template
+# :anatomical_heart: MX Cleaned Dataset dashboard
 
-A simple Streamlit app showing the GDP of different countries in the world.
+A simple Streamlit app showing the dashboard for custom .csv file.
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://gdp-dashboard-template.streamlit.app/)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://stopshock-mx-data-dashboard.streamlit.app/)
 
 ### How to run it on your own machine
 

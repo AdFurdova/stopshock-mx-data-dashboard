@@ -5,7 +5,6 @@ import plotly.express as px
 st.title("MX Data Dashboard")
 
 df = pd.read_csv("data/STOPSHOCK_MX_clean.csv")
-# df = df.iloc[:,2:4]
 
 st.write("### Data Preview")
 st.dataframe(df)
