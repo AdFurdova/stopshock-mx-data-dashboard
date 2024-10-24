@@ -4,7 +4,14 @@ import plotly.express as px
 
 st.title("MX Data Dashboard")
 
-df = pd.read_csv("data/STOPSHOCK_MX_clean.csv")
+st.title("CSV File Uploader")
+
+uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
+
+if uploaded_file is not None:
+    df = pd.read_csv(uploaded_file)
+else:
+    df = pd.read_csv("data/STOPSHOCK_MX_clean.csv")
 
 st.write("### Data Preview")
 st.dataframe(df)
