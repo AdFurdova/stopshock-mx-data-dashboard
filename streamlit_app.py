@@ -12,30 +12,31 @@ except:
         st.title("CSV File Uploader")
         df = pd.read_csv(uploaded_file)
 
-st.write("### Data Preview")
-st.dataframe(df)
+if df is not None:
+    st.write("### Data Preview")
+    st.dataframe(df)
 
-st.sidebar.title("Column Options")
-column = st.sidebar.selectbox("Select a column for analysis", df.columns)
+    st.sidebar.title("Column Options")
+    column = st.sidebar.selectbox("Select a column for analysis", df.columns)
 
-st.write(f"### {column} Analysis")
-value_counts = df[column].value_counts()
-missing_percentage = df[column].isnull().sum() / len(df) * 100
+    st.write(f"### {column} Analysis")
+    value_counts = df[column].value_counts()
+    missing_percentage = df[column].isnull().sum() / len(df) * 100
 
-st.write(f"**Value Counts for {column}:**")
-st.write(value_counts)
+    st.write(f"**Value Counts for {column}:**")
+    st.write(value_counts)
 
-st.write(f"**Missing Values Percentage for {column}:** {missing_percentage:.2f}%")
+    st.write(f"**Missing Values Percentage for {column}:** {missing_percentage:.2f}%")
 
-st.write(f"### Distribution Plot of {column}")
-fig = px.histogram(df, x=column, title=f"Distribution of {column}")
-st.plotly_chart(fig)
+    st.write(f"### Distribution Plot of {column}")
+    fig = px.histogram(df, x=column, title=f"Distribution of {column}")
+    st.plotly_chart(fig)
 
-st.write(f"### Missing Data Distribution for {column}")
-missing_fig = px.bar(
-    x=["Missing", "Not Missing"],
-    y=[df[column].isnull().sum(), df[column].notnull().sum()],
-    labels={"y": "Count"},
-    title=f"Missing Data for {column}"
-)
-st.plotly_chart(missing_fig)
+    st.write(f"### Missing Data Distribution for {column}")
+    missing_fig = px.bar(
+        x=["Missing", "Not Missing"],
+        y=[df[column].isnull().sum(), df[column].notnull().sum()],
+        labels={"y": "Count"},
+        title=f"Missing Data for {column}"
+    )
+    st.plotly_chart(missing_fig)
