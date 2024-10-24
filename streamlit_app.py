@@ -4,13 +4,19 @@ import plotly.express as px
 
 st.title("MX Data Dashboard")
 
+df = None
+
 try:
-    df = pd.read_csv("data/STOPSHOCK_MX_clean.csv")
-except:
+    df = pd.read_csv("")
+except FileNotFoundError as e:
+    st.title("CSV File Uploader")
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
     if uploaded_file is not None:
-        st.title("CSV File Uploader")
         df = pd.read_csv(uploaded_file)
+        st.success("File uploaded successfully!")
+    else:
+        pass
+
 
 if df is not None:
     st.write("### Data Preview")
@@ -40,6 +46,5 @@ if df is not None:
         title=f"Missing Data for {column}"
     )
     st.plotly_chart(missing_fig)
-
 else:
-    st.write("### Please upload .csv file")
+    st.warning("Please upload a .csv file")
