@@ -7,7 +7,7 @@ st.title("MX Data Dashboard")
 df = None
 
 try:
-    df = pd.read_csv("")
+    df = pd.read_csv("data/STOPSHOCK_MX_clean.csv")
 except FileNotFoundError as e:
     st.title("CSV File Uploader")
     uploaded_file = st.file_uploader("Choose a CSV file", type="csv")
@@ -39,11 +39,12 @@ if df is not None:
     st.plotly_chart(fig)
 
     st.write(f"### Missing Data Distribution for {column}")
+    missing_sum = df[column].isnull().sum()
     missing_fig = px.bar(
         x=["Missing", "Not Missing"],
         y=[df[column].isnull().sum(), df[column].notnull().sum()],
         labels={"y": "Count"},
-        title=f"Missing Data for {column}"
+        title=f"Missing Data for {column}: {missing_sum}"
     )
     st.plotly_chart(missing_fig)
 else:
